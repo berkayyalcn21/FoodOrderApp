@@ -18,7 +18,7 @@ class LoginInteractor: PresenterToInteractorLoginProtocol {
     func loginPerson(email: String, password: String) {
         
         let auth = Auth.auth()
-        auth.signIn(withEmail: email, password: password) { authResult, error in
+        auth.signIn(withEmail: email, password: password) { _, error in
             if error != nil {
                 print("Başarız")
                 self.loginContol = error?.localizedDescription

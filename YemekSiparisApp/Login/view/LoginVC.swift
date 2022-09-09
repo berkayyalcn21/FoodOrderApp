@@ -39,18 +39,14 @@ class LoginVC: UIViewController {
             loginPresenterObject?.login(email: emailTextField.text!, password: passwordTextField.text!)
             
             if loginPresenterObject?.loginInteractor?.loginContol != nil {
-                let alert = UIAlertController(title: nil, message: loginPresenterObject?.loginInteractor?.loginContol, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Tamam", style: .default))
-                present(alert, animated: true)
+                standartAlert(nil, loginPresenterObject?.loginInteractor?.loginContol, .alert, "Tamam", .default)
                 
             }else {
                 self.performSegue(withIdentifier: "toHome", sender: nil)
             }
             
         }else {
-            let alert = UIAlertController(title: "Hata", message: "Boş alan bırakmayınız!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Tamam", style: .default))
-            present(alert, animated: true)
+            standartAlert(nil, "Boş alan bırakmayınız!", .alert, "Tamam", .default)
         }
     }
     
@@ -64,5 +60,13 @@ extension LoginVC: PresenterToViewLoginProtocol {
     
     func dataTransferToView(isSuccess: String) {
         self.isSuccess = isSuccess
+    }
+}
+
+extension LoginVC {
+    func standartAlert(_ title: String?, _ messsage: String?, _ preferredStyle: UIAlertController.Style, _ buttonTitle: String, _ buttonStyle: UIAlertAction.Style) {
+        let alert = UIAlertController(title: title, message: messsage, preferredStyle: preferredStyle)
+        alert.addAction(UIAlertAction(title: buttonTitle, style: buttonStyle))
+        self.present(alert, animated: true)
     }
 }
