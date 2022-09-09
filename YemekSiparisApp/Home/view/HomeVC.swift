@@ -105,9 +105,7 @@ extension HomeVC: PresenterToViewHomeProtocol {
     
     func dataTransferToView(foodsList: Array<Foods>) {
         self.foodsList = foodsList
-        DispatchQueue.main.async {
-            self.collectionViewProducts.reloadData()
-        }
+        self.collectionViewProducts.reloadData()
     }
 }
 

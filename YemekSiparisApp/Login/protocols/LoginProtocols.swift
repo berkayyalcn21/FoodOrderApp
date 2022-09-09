@@ -24,11 +24,11 @@ protocol PresenterToInteractorLoginProtocol {
 
 // Transfer Protocols
 protocol InteractorToPresenterLoginProtocol {
-    func dataTransferToPresenter(isSuccess: String)
+    func dataTransferToPresenter(isSuccess: Bool)
 }
 
 protocol PresenterToViewLoginProtocol {
-    func dataTransferToView(isSuccess: String)
+    func dataTransferToView(isSuccess: Bool)
 }
 
 // Router

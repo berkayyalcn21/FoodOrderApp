@@ -12,7 +12,6 @@ class LoginVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     var loginPresenterObject: ViewToPresenterLoginProtocol?
-    var isSuccess: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,14 +36,6 @@ class LoginVC: UIViewController {
     @IBAction func loginButtonTapped(_ sender: Any) {
         if emailTextField.text != "" && passwordTextField.text != "" {
             loginPresenterObject?.login(email: emailTextField.text!, password: passwordTextField.text!)
-            
-            if loginPresenterObject?.loginInteractor?.loginContol != nil {
-                standartAlert(nil, loginPresenterObject?.loginInteractor?.loginContol, .alert, "Tamam", .default)
-                
-            }else {
-                self.performSegue(withIdentifier: "toHome", sender: nil)
-            }
-            
         }else {
             standartAlert(nil, "Boş alan bırakmayınız!", .alert, "Tamam", .default)
         }
@@ -58,8 +49,12 @@ class LoginVC: UIViewController {
 
 extension LoginVC: PresenterToViewLoginProtocol {
     
-    func dataTransferToView(isSuccess: String) {
-        self.isSuccess = isSuccess
+    func dataTransferToView(isSuccess: Bool) {
+        if isSuccess {
+            self.performSegue(withIdentifier: "toHome", sender: nil)
+        }else {
+            standartAlert(nil, loginPresenterObject?.loginInteractor?.loginContol, .alert, "Tamam", .default)
+        }
     }
 }
 

@@ -21,7 +21,7 @@ class LoginPresenter: ViewToPresenterLoginProtocol {
 
 extension LoginPresenter: InteractorToPresenterLoginProtocol {
     
-    func dataTransferToPresenter(isSuccess: String) {
+    func dataTransferToPresenter(isSuccess: Bool) {
         loginView?.dataTransferToView(isSuccess: isSuccess)
     }
 }

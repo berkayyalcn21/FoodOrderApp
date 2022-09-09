@@ -20,10 +20,10 @@ class LoginInteractor: PresenterToInteractorLoginProtocol {
         let auth = Auth.auth()
         auth.signIn(withEmail: email, password: password) { _, error in
             if error != nil {
-                print("Başarız")
                 self.loginContol = error?.localizedDescription
+                self.loginPresenter?.dataTransferToPresenter(isSuccess: false)
             }else {
-                print("Başarılı")
+                self.loginPresenter?.dataTransferToPresenter(isSuccess: true)
             }
         }
     }
