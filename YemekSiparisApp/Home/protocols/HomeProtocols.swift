@@ -1,0 +1,41 @@
+//
+//  HomeProtocols.swift
+//  YemekSiparisApp
+//
+//  Created by Berkay on 7.09.2022.
+//
+
+import Foundation
+
+// Main Protocols
+protocol ViewToPresenterHomeProtocol {
+    
+    var homeInteractor: PresenterToInteractorHomeProtocol? {get set}
+    var homeView: PresenterToViewHomeProtocol? {get set}
+    func allFoods()
+    func search(food_id: String)
+}
+
+protocol PresenterToInteractorHomeProtocol {
+    
+    var homePresenter: InteractorToPresenterHomeProtocol? {get set}
+    func getAllFoods()
+    func searchFood(food_id: String)
+}
+
+// Transfer Protocols
+protocol InteractorToPresenterHomeProtocol {
+    
+    func dataTransferToPresenter(foodsList: Array<Foods>)
+}
+
+protocol PresenterToViewHomeProtocol {
+    
+    func dataTransferToView(foodsList: Array<Foods>)
+}
+
+// Router
+protocol PresenterToRouterHomeProtocol {
+    
+    static func createModule(ref: HomeVC)
+}
