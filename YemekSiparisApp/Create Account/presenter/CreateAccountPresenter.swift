@@ -10,6 +10,7 @@ import Foundation
 
 class CreateAccountPresenter: ViewToPresenterCreateAccountProtocol {
     
+    var createAccountView: PresenterToViewCreateAccountProtocol?
     var createAccountInteractor: PresenterToInteractorCreateAccountProtocol?
     
     func add(email: String, password: String) {
@@ -17,3 +18,9 @@ class CreateAccountPresenter: ViewToPresenterCreateAccountProtocol {
     }
 }
 
+extension CreateAccountPresenter: InteractorToPresenterCreateAccountProtocol {
+    
+    func dataTransferToPresenter(error: Bool) {
+        createAccountView?.dataTransferToView(error: error)
+    }
+}

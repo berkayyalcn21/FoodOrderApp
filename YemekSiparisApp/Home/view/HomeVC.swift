@@ -1,3 +1,4 @@
+
 //
 //  HomeVC.swift
 //  YemekSiparisApp
@@ -7,6 +8,8 @@
 
 import UIKit
 import SwiftUI
+import Kingfisher
+import Firebase
 
 class HomeVC: UIViewController {
     
@@ -20,6 +23,7 @@ class HomeVC: UIViewController {
     ]
     var homePresenterObjc: ViewToPresenterHomeProtocol?
     var foodsList = [Foods]()
+    var currentUser = Auth.auth().currentUser?.email
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +58,7 @@ class HomeVC: UIViewController {
 }
 
 
-extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, BagButtonsProtocol {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
@@ -80,17 +84,33 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
             let food = foodsList[indexPath.row]
             let baseUrl = "http://kasimadalan.pe.hu/yemekler/resimler/"
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! HomeCollectionViewCellProducts
-            let url = URL(string: "\(baseUrl)\(food.yemek_resim_adi!)")
-            if let data = try? Data(contentsOf: url!) {
-                cell.imageView.image = UIImage(data: data)
+            cell.imageView.image = UIImage(systemName: "photo")
+            if let url = URL(string: "\(baseUrl)\(food.yemek_resim_adi!)") {
+                DispatchQueue.main.async {
+                    cell.imageView.kf.setImage(with: url)
+                }
             }
             cell.foodNameLabel.text = food.yemek_adi
             cell.foodPriceLabel.text = "\(food.yemek_fiyat!) ₺"
+            cell.itemsProtocol = self
+            cell.indexPath = indexPath
             return cell
         default:
             return UICollectionViewCell()
         }
     }
+    
+    func addButtonDataTransfer(indexPath: IndexPath) {
+        let food = foodsList[indexPath.row]
+        print(food.yemek_id!)
+    }
+    
+    func subtractButtonDataTransfer(indexPath: IndexPath) {
+        let food = foodsList[indexPath.row]
+        print(food.yemek_fiyat!)
+    }
+    
+    
 }
 
 extension HomeVC: UICollectionViewDelegateFlowLayout {

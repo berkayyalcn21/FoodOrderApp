@@ -9,9 +9,9 @@ import Foundation
 
 // Main Protocols
 protocol ViewToPresenterLoginProtocol {
+    
     var loginInteractor: PresenterToInteractorLoginProtocol? {get set}
     var loginView: PresenterToViewLoginProtocol? {get set}
-    
     func login(email: String, password: String)
 }
 

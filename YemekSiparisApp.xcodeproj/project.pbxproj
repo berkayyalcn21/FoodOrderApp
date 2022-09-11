@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F005221628CB786400B7AEAC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F005221528CB786400B7AEAC /* Kingfisher */; };
 		F01856EC28C232270056FA6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01856EB28C232270056FA6E /* AppDelegate.swift */; };
 		F01856EE28C232270056FA6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01856ED28C232270056FA6E /* SceneDelegate.swift */; };
 		F01856F028C232270056FA6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01856EF28C232270056FA6E /* ViewController.swift */; };
@@ -18,6 +19,8 @@
 		F046F7D528C9C14A00C6CE49 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F046F7D428C9C14A00C6CE49 /* HomeCollectionViewCell.swift */; };
 		F046F7D728C9F5F300C6CE49 /* HomeEntity-2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F046F7D628C9F5F300C6CE49 /* HomeEntity-2.swift */; };
 		F046F7D928CA07A300C6CE49 /* HomeCollectionViewCellProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F046F7D828CA07A300C6CE49 /* HomeCollectionViewCellProducts.swift */; };
+		F080791328CCFFF700447AC0 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080791228CCFFF700447AC0 /* TableViewCell.swift */; };
+		F080791528CD2E0B00447AC0 /* BasketEntity_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F080791428CD2E0B00447AC0 /* BasketEntity_2.swift */; };
 		F0AE44F028C778C400712747 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AE44EF28C778C400712747 /* LoginVC.swift */; };
 		F0AE44F228C8A82B00712747 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AE44F128C8A82B00712747 /* CreateAccountVC.swift */; };
 		F0AE44F428C8A95E00712747 /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AE44F328C8A95E00712747 /* ForgetPasswordVC.swift */; };
@@ -69,6 +72,8 @@
 		F046F7D428C9C14A00C6CE49 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		F046F7D628C9F5F300C6CE49 /* HomeEntity-2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeEntity-2.swift"; sourceTree = "<group>"; };
 		F046F7D828CA07A300C6CE49 /* HomeCollectionViewCellProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCellProducts.swift; sourceTree = "<group>"; };
+		F080791228CCFFF700447AC0 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		F080791428CD2E0B00447AC0 /* BasketEntity_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketEntity_2.swift; sourceTree = "<group>"; };
 		F0AE44EF28C778C400712747 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		F0AE44F128C8A82B00712747 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		F0AE44F328C8A95E00712747 /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
@@ -113,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F005221628CB786400B7AEAC /* Kingfisher in Frameworks */,
 				F018570128C234E70056FA6E /* FirebaseAuth in Frameworks */,
 				F018570628C242250056FA6E /* Alamofire in Frameworks */,
 			);
@@ -163,6 +169,14 @@
 				F046F7D828CA07A300C6CE49 /* HomeCollectionViewCellProducts.swift */,
 			);
 			path = collectionViewCell;
+			sourceTree = "<group>";
+		};
+		F080791128CCFFC600447AC0 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				F080791228CCFFF700447AC0 /* TableViewCell.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		F0AE44F528C8ABD100712747 /* Login */ = {
@@ -383,6 +397,7 @@
 		F0AE452B28C9094100712747 /* Basket */ = {
 			isa = PBXGroup;
 			children = (
+				F080791128CCFFC600447AC0 /* TableView */,
 				F0AE453828C909AC00712747 /* protocols */,
 				F0AE453728C909A700712747 /* router */,
 				F0AE453628C909A200712747 /* entity */,
@@ -483,6 +498,7 @@
 			isa = PBXGroup;
 			children = (
 				F0AE455128C90A4900712747 /* BasketEntity.swift */,
+				F080791428CD2E0B00447AC0 /* BasketEntity_2.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -570,6 +586,7 @@
 			packageProductDependencies = (
 				F018570028C234E70056FA6E /* FirebaseAuth */,
 				F018570528C242250056FA6E /* Alamofire */,
+				F005221528CB786400B7AEAC /* Kingfisher */,
 			);
 			productName = YemekSiparisApp;
 			productReference = F01856E828C232270056FA6E /* YemekSiparisApp.app */;
@@ -602,6 +619,7 @@
 			packageReferences = (
 				F01856FF28C234E70056FA6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F018570428C242250056FA6E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F005221428CB786400B7AEAC /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = F01856E928C232270056FA6E /* Products */;
 			projectDirPath = "";
@@ -653,6 +671,7 @@
 				F0AE455A28C90A7D00712747 /* DetailsInteractor.swift in Sources */,
 				F0AE454C28C90A2800712747 /* BasketVC.swift in Sources */,
 				F0AE455028C90A3B00712747 /* BasketPresenter.swift in Sources */,
+				F080791328CCFFF700447AC0 /* TableViewCell.swift in Sources */,
 				F0AE451928C8B2CB00712747 /* CreateAccountPresenter.swift in Sources */,
 				F0AE454A28C90A1B00712747 /* HomeProtocols.swift in Sources */,
 				F0AE454628C90A0B00712747 /* HomeEntity.swift in Sources */,
@@ -673,6 +692,7 @@
 				F046F7D928CA07A300C6CE49 /* HomeCollectionViewCellProducts.swift in Sources */,
 				F0AE452928C8B31700712747 /* ForgetPasswordProtocols.swift in Sources */,
 				F0AE455C28C90A8400712747 /* DetailsPresenter.swift in Sources */,
+				F080791528CD2E0B00447AC0 /* BasketEntity_2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -892,6 +912,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F005221428CB786400B7AEAC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		F01856FF28C234E70056FA6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -911,6 +939,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F005221528CB786400B7AEAC /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F005221428CB786400B7AEAC /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		F018570028C234E70056FA6E /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F01856FF28C234E70056FA6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

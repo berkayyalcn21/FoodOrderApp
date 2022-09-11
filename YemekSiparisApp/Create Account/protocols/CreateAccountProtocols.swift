@@ -11,12 +11,24 @@ import Foundation
 protocol ViewToPresenterCreateAccountProtocol {
     
     var createAccountInteractor: PresenterToInteractorCreateAccountProtocol? {get set}
+    var createAccountView: PresenterToViewCreateAccountProtocol? {get set}
     func add(email: String, password: String)
 }
 
 protocol PresenterToInteractorCreateAccountProtocol {
     
+    var createAccountPresenter: InteractorToPresenterCreateAccountProtocol? {get set}
+    var createAccountError: String? {get set}
     func addPerson(email: String, password: String)
+}
+
+// Transfer Protocols
+protocol InteractorToPresenterCreateAccountProtocol {
+    func dataTransferToPresenter(error: Bool)
+}
+
+protocol PresenterToViewCreateAccountProtocol {
+    func dataTransferToView(error: Bool)
 }
 
 

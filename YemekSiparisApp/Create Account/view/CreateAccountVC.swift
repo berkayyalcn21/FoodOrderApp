@@ -21,7 +21,6 @@ class CreateAccountVC: UIViewController {
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
         CreateAccountRouter.createModule(ref: self)
     }
     
@@ -43,48 +42,48 @@ class CreateAccountVC: UIViewController {
     
     @IBAction func kvkkButtonTapped(_ sender: Any) {
         if kvkkIsComplete {
+            kvkkIsComplete = false
             kvkkButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
         }else {
             kvkkButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
             kvkkIsComplete = true
         }
-        
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
-    
-        let alert = UIAlertController()
         if emailTextField.text != "" && passwordTextField.text != "" && againPasswordTextField.text != "" {
             if passwordTextField.text == againPasswordTextField.text {
-                if passwordTextField.text!.count > 5 && againPasswordTextField.text!.count > 5 {
-                    if kvkkIsComplete {
-                        self.createAccountPresenterObject?.add(email: self.emailTextField.text!, password: self.passwordTextField.text!)
-                        self.dismiss(animated: true)
-                    }else {
-                        alert.title = "UYARI"
-                        alert.message = "KVKK Koşullarını kabul ediniz."
-                        alert.addAction(UIAlertAction(title: "Tamam", style: .default))
-                        present(alert, animated: true)
-                    }
-                }else {
-                    alert.title = "UYARI"
-                    alert.message = "Şifreniz minimum 6 haneli olmalıdır!"
-                    alert.addAction(UIAlertAction(title: "Tamam", style: .default))
-                    present(alert, animated: true)
-                }
+                createAccountPresenterObject?.add(email: emailTextField.text!, password: passwordTextField.text!)
             }else {
-                alert.title = "UYARI"
-                alert.message = "Şifreniz aynı olmalı!"
-                alert.addAction(UIAlertAction(title: "Tamam", style: .default))
-                present(alert, animated: true)
+                standartAlert(nil, "Parola tekrarı aynı olmalıdır", .alert, "Tamam", .default)
             }
         }else {
-            alert.title = "UYARI"
-            alert.message = "Lütfen boş alan bırakmayınız."
-            alert.addAction(UIAlertAction(title: "Tamam", style: .default))
-            present(alert, animated: true)
+            standartAlert(nil, "Lütfen boş alan bırakmayınız.", .alert, "Tamam", .default)
         }
     }
     
 }
 
+extension CreateAccountVC: PresenterToViewCreateAccountProtocol {
+    
+    func dataTransferToView(error: Bool) {
+        if error {
+            standartAlert(nil, createAccountPresenterObject?.createAccountInteractor?.createAccountError, .alert, "Tamam", .default)
+        }else {
+            let alert = UIAlertController(title: nil, message: "Kayıt başarılı", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Tamam", style: .default, handler: { _ in
+                self.dismiss(animated: true)
+            }))
+            present(alert, animated: true)
+        }
+    }
+}
+
+
+extension CreateAccountVC {
+    func standartAlert(_ title: String?, _ messsage: String?, _ preferredStyle: UIAlertController.Style, _ buttonTitle: String?, _ buttonStyle: UIAlertAction.Style) {
+        let alert = UIAlertController(title: title, message: messsage, preferredStyle: preferredStyle)
+        alert.addAction(UIAlertAction(title: buttonTitle, style: buttonStyle))
+        self.present(alert, animated: true)
+    }
+}
