@@ -518,7 +518,7 @@
         <!--HomeVC-->
         <scene sceneID="UpL-x7-QH4">
             <objects>
-                <viewController id="IG8-Vf-Bmo" customClass="HomeVC" customModule="YemekSiparisApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" id="IG8-Vf-Bmo" customClass="HomeVC" customModule="YemekSiparisApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L6W-dd-mnu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -541,6 +541,9 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
                                     <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="basketButtonTapped:" destination="IG8-Vf-Bmo" eventType="touchUpInside" id="pzn-PJ-k5j"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2S3-pZ-B2z">
                                 <rect key="frame" x="0.0" y="144" width="414" height="250"/>
@@ -729,6 +732,7 @@
                     <connections>
                         <outlet property="collectionViewProducts" destination="YFQ-Jd-gmA" id="GdI-ee-0Eb"/>
                         <outlet property="collectionViewSlider" destination="2S3-pZ-B2z" id="Tn7-KD-bXn"/>
+                        <segue destination="ykW-yf-aFP" kind="presentation" identifier="toBasket" modalPresentationStyle="fullScreen" id="zdH-SN-UdN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w2K-JC-fSx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -751,6 +755,7 @@
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
+                                    <action selector="backButtonTapped:" destination="ykW-yf-aFP" eventType="touchUpInside" id="EVO-aX-TBl"/>
                                     <action selector="backButtonTapped:" destination="o4N-yS-Jdz" eventType="touchUpInside" id="kLS-yH-NfY"/>
                                 </connections>
                             </button>

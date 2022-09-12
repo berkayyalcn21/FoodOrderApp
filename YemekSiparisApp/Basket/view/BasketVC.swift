@@ -19,6 +19,8 @@ class BasketVC: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        BasketRouter.createModule(ref: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +31,10 @@ class BasketVC: UIViewController {
         let alert = UIAlertController(title: nil, message: "Siparişiniz alınmıştır", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Tamam", style: .default))
         present(alert, animated: true)
+    }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        dismiss(animated: true)
     }
 }
 

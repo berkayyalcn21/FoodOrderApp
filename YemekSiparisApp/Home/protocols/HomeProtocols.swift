@@ -14,6 +14,7 @@ protocol ViewToPresenterHomeProtocol {
     var homeView: PresenterToViewHomeProtocol? {get set}
     func allFoods()
     func search(food_id: String)
+    func order(food_name: String, food_image_name: String, food_price: Int, food_order_count: Int, currentUser: String)
 }
 
 protocol PresenterToInteractorHomeProtocol {
@@ -21,6 +22,7 @@ protocol PresenterToInteractorHomeProtocol {
     var homePresenter: InteractorToPresenterHomeProtocol? {get set}
     func getAllFoods()
     func searchFood(food_id: String)
+    func addOrder(food_name: String, food_image_name: String, food_price: Int, food_order_count: Int, currentUser: String)
 }
 
 // Transfer Protocols

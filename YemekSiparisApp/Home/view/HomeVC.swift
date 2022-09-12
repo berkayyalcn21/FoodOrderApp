@@ -24,6 +24,7 @@ class HomeVC: UIViewController {
     var homePresenterObjc: ViewToPresenterHomeProtocol?
     var foodsList = [Foods]()
     var currentUser = Auth.auth().currentUser?.email
+    var orderCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,10 @@ class HomeVC: UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    @IBAction func basketButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "toBasket", sender: nil)
     }
     
 }
@@ -102,7 +107,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, BagButto
     
     func addButtonDataTransfer(indexPath: IndexPath) {
         let food = foodsList[indexPath.row]
-        print(food.yemek_id!)
+        orderCount += 1
+        homePresenterObjc?.order(food_name: food.yemek_adi!, food_image_name: food.yemek_resim_adi!, food_price: Int(food.yemek_fiyat!)!, food_order_count: orderCount, currentUser: currentUser!)
     }
     
     func subtractButtonDataTransfer(indexPath: IndexPath) {
