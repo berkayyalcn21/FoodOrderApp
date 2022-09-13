@@ -29,8 +29,20 @@ class HomeInteractor: PresenterToInteractorHomeProtocol {
         }
     }
     
-    func searchFood(food_id: String) {
-        
+    func searchFood(food_name: String) {
+        let params: Parameters = ["yemek_adi": food_name]
+        AF.request("http://kasimadalan.pe.hu/yemekler/tumYemekleriGetir.php", method: .post, parameters: params).response { response in
+            if let data = response.data {
+                do {
+                    let result = try JSONDecoder().decode(FoodsResult.self, from: data)
+                    if let list = result.yemekler {
+                        self.homePresenter?.dataTransferToPresenter(foodsList: list)
+                    }
+                }catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
     
     func addOrder(food_name: String, food_image_name: String, food_price: Int, food_order_count: Int, currentUser: String) {

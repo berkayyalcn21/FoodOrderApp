@@ -17,7 +17,7 @@ class HomePresenter: ViewToPresenterHomeProtocol {
         homeInteractor?.getAllFoods()
     }
     
-    func search(food_id: String) {
+    func search(food_name: String) {
         
     }
     

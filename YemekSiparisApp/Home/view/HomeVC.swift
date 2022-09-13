@@ -23,6 +23,7 @@ class HomeVC: UIViewController {
     ]
     var homePresenterObjc: ViewToPresenterHomeProtocol?
     var foodsList = [Foods]()
+    var filteredFoodList = [Foods]()
     var currentUser = Auth.auth().currentUser?.email
     var orderCount = 0
     var lastOrderedFoodName: String?
@@ -89,6 +90,10 @@ class HomeVC: UIViewController {
 
 // CollectionView delegate import
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, BagButtonsProtocol {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
     
     // Rows size
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -175,3 +180,8 @@ extension HomeVC: PresenterToViewHomeProtocol {
     }
 }
 
+extension HomeVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        filteredFoodList = foodsList.contains(
+    }
+}
