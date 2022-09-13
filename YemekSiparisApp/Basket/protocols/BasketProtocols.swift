@@ -13,14 +13,14 @@ protocol ViewToPresenterBasketProtocol {
     var basketInteractor: PresenterToInteractorBasketProtocol? {get set}
     var basketView: PresenterToViewBasketProtocol? {get set}
     func fethFoods()
-    func deleteFood()
+    func deleteFood(food_id: String)
 }
 
 protocol PresenterToInteractorBasketProtocol {
     
     var basketPresenter: InteractorToPresenterBasketProtocol? {get set}
     func fetch()
-    func delete()
+    func delete(food_id: String)
 }
 
 // Transfer Protocols

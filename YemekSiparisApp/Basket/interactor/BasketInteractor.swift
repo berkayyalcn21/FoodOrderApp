@@ -13,9 +13,9 @@ import Firebase
 class BasketInteractor: PresenterToInteractorBasketProtocol {
     
     var basketPresenter: InteractorToPresenterBasketProtocol?
+    let currentUser = Auth.auth().currentUser?.email
     
     func fetch() {
-        let currentUser = Auth.auth().currentUser?.email
         let params: Parameters = ["kullanici_adi": currentUser!]
         AF.request("http://kasimadalan.pe.hu/yemekler/sepettekiYemekleriGetir.php", method: .post, parameters: params).response { response in
             if let data = response.data {
@@ -31,8 +31,19 @@ class BasketInteractor: PresenterToInteractorBasketProtocol {
         }
     }
     
-    func delete() {
-        
+    func delete(food_id: String) {
+        let params: Parameters = ["sepet_yemek_id": food_id, "kullanici_adi": currentUser!]
+        AF.request("http://kasimadalan.pe.hu/yemekler/sepettenYemekSil.php", method: .post, parameters: params).response { response in
+            if let data = response.data {
+                do {
+                    let result = try JSONSerialization.jsonObject(with: data)
+                    print(result)
+                    self.fetch()
+                }catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
     
     

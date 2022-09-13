@@ -62,6 +62,14 @@ extension BasketVC: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Sil") { contexttualAction, view, bool in
+            let food = self.foods[indexPath.row]
+            self.basketPresenterObjc?.deleteFood(food_id: food.sepet_yemek_id!)
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
 }
 
 extension BasketVC: PresenterToViewBasketProtocol {

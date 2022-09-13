@@ -18,8 +18,8 @@ class BasketPresenter: ViewToPresenterBasketProtocol {
         basketInteractor?.fetch()
     }
     
-    func deleteFood() {
-        
+    func deleteFood(food_id: String) {
+        basketInteractor?.delete(food_id: food_id)
     }
 
     
