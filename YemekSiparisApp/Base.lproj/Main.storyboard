@@ -633,48 +633,37 @@
                                                                 <constraint firstAttribute="height" constant="111" id="elm-TK-8xq"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fkd-NY-q8s">
-                                                            <rect key="frame" x="20" y="221" width="130.5" height="34"/>
-                                                            <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iW1-Z0-ToX">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="34"/>
-                                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="plain" image="minus.circle.fill" catalog="system"/>
-                                                                    <connections>
-                                                                        <action selector="subtractButtonTapped:" destination="tpO-T1-pDi" eventType="touchUpInside" id="Qcf-Os-7L8"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUx-7t-MkY">
-                                                                    <rect key="frame" x="60" y="0.0" width="10.5" height="34"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Yn-I1-ISe">
-                                                                    <rect key="frame" x="80.5" y="0.0" width="50" height="34"/>
-                                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="plain" image="plus.circle.fill" catalog="system"/>
-                                                                    <connections>
-                                                                        <action selector="addButtonTapped:" destination="tpO-T1-pDi" eventType="touchUpInside" id="1Cn-xj-bTf"/>
-                                                                    </connections>
-                                                                </button>
-                                                            </subviews>
-                                                        </stackView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQt-RS-xE2">
+                                                            <rect key="frame" x="14.5" y="217" width="141" height="35"/>
+                                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="141" id="YPD-kE-gSB"/>
+                                                                <constraint firstAttribute="height" constant="35" id="tym-a1-6Lz"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" title="DETAY">
+                                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </buttonConfiguration>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="cornerRadius" value="10"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="detailButtonTapped:" destination="tpO-T1-pDi" eventType="touchUpInside" id="lzS-tm-EoP"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="07u-PJ-tK3" firstAttribute="centerX" secondItem="WJM-qz-aM3" secondAttribute="centerX" id="1Mt-LC-oQE"/>
                                                         <constraint firstAttribute="height" constant="272" id="3He-8K-Rey"/>
-                                                        <constraint firstItem="fkd-NY-q8s" firstAttribute="top" secondItem="fnA-hU-y65" secondAttribute="bottom" constant="26" id="MoD-1d-wAi"/>
+                                                        <constraint firstItem="IQt-RS-xE2" firstAttribute="centerX" secondItem="WJM-qz-aM3" secondAttribute="centerX" id="Xin-GZ-jlc"/>
                                                         <constraint firstItem="PJ5-eJ-oTJ" firstAttribute="top" secondItem="WJM-qz-aM3" secondAttribute="top" constant="8" id="gs0-1W-uWU"/>
                                                         <constraint firstItem="fnA-hU-y65" firstAttribute="top" secondItem="07u-PJ-tK3" secondAttribute="bottom" constant="20" id="meA-hZ-tzj"/>
                                                         <constraint firstItem="PJ5-eJ-oTJ" firstAttribute="centerX" secondItem="WJM-qz-aM3" secondAttribute="centerX" id="rKb-ap-zwf"/>
                                                         <constraint firstAttribute="width" constant="170" id="s4z-c6-rdD"/>
                                                         <constraint firstItem="07u-PJ-tK3" firstAttribute="top" secondItem="PJ5-eJ-oTJ" secondAttribute="bottom" constant="8" id="txs-ep-CNd"/>
                                                         <constraint firstItem="fnA-hU-y65" firstAttribute="centerX" secondItem="WJM-qz-aM3" secondAttribute="centerX" id="v02-Yq-dCp"/>
-                                                        <constraint firstItem="fkd-NY-q8s" firstAttribute="centerX" secondItem="WJM-qz-aM3" secondAttribute="centerX" id="yMD-17-lKB"/>
+                                                        <constraint firstItem="IQt-RS-xE2" firstAttribute="top" secondItem="fnA-hU-y65" secondAttribute="bottom" constant="22" id="yzD-az-IfN"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="cornerRadius" value="10"/>
@@ -689,7 +678,6 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <outlet property="countLabel" destination="QUx-7t-MkY" id="6k8-Na-o8H"/>
                                             <outlet property="foodNameLabel" destination="07u-PJ-tK3" id="Hbk-7j-xnD"/>
                                             <outlet property="foodPriceLabel" destination="fnA-hU-y65" id="cVh-bc-ILW"/>
                                             <outlet property="imageView" destination="PJ5-eJ-oTJ" id="yPY-KR-Nj3"/>
@@ -992,6 +980,7 @@
                                 <connections>
                                     <action selector="backButtonTapped:" destination="o4N-yS-Jdz" eventType="touchUpInside" id="Fkn-4w-ouY"/>
                                     <action selector="backButtonTapped:" destination="ykW-yf-aFP" eventType="touchUpInside" id="PbH-dq-8a8"/>
+                                    <action selector="backButtonTapped:" destination="VMw-NS-hs5" eventType="touchUpInside" id="epX-u3-SQN"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ürün Detay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aq0-HF-bpR">
@@ -1083,6 +1072,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" image="minus" catalog="system">
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="subtractProductButtonTapped:" destination="VMw-NS-hs5" eventType="touchUpInside" id="5CI-Fe-xy3"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4l5-tz-tY4">
                                                 <rect key="frame" x="38" y="17" width="38" height="20.5"/>
@@ -1096,6 +1088,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system">
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="addProductButtonTapped:" destination="VMw-NS-hs5" eventType="touchUpInside" id="baL-dp-PQ8"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1123,6 +1118,9 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="19"/>
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addProductToBasket:" destination="VMw-NS-hs5" eventType="touchUpInside" id="B2K-ap-VDp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="MainColor"/>
@@ -1169,6 +1167,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="05B-Ue-2xg"/>
+                    <connections>
+                        <outlet property="foodDescLabel" destination="T4x-ac-e0b" id="ldj-b2-zXg"/>
+                        <outlet property="foodNameLabel" destination="4GP-8C-4Kq" id="kYt-TP-Beb"/>
+                        <outlet property="foodStarLabel" destination="T4x-ac-e0b" id="wDq-PJ-AXa"/>
+                        <outlet property="imageView" destination="uGG-Sk-Sjq" id="1zF-rY-RY5"/>
+                        <outlet property="orderCountLabel" destination="4l5-tz-tY4" id="9fb-yl-itc"/>
+                        <outlet property="totalPriceLabel" destination="FWp-Jx-U6k" id="bNG-sw-lwD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1j-dA-2ai" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1193,7 +1199,6 @@
         <image name="clock" catalog="system" width="128" height="123"/>
         <image name="fork.knife" catalog="system" width="94" height="128"/>
         <image name="minus" catalog="system" width="128" height="26"/>
-        <image name="minus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>

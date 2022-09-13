@@ -91,12 +91,7 @@ class HomeVC: UIViewController {
 // CollectionView delegate import
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, BagButtonsProtocol {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let food = foodsList[indexPath.row]
-        performSegue(withIdentifier: "toDetails", sender: food)
-        collectionView.deselectItem(at: indexPath, animated: true)
-        print("Clicked")
-    }
+  
     
     // Rows size
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -143,27 +138,43 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, BagButto
     }
     
     // Add button product to basket
-    func addButtonDataTransfer(indexPath: IndexPath) {
+//    func addButtonDataTransfer(indexPath: IndexPath) {
+//        let food = foodsList[indexPath.row]
+//        if let temp = lastOrderedFoodName, !(lastOrderedFoodName?.isEmpty ?? false) {
+//            if (food.yemek_adi != temp) {
+//                orderCount = 0
+//                self.lastOrderedFoodName = food.yemek_adi
+//            }
+//        }
+//        else {
+//            self.lastOrderedFoodName = food.yemek_adi
+//        }
+//        orderCount += 1
+//        homePresenterObjc?.order(food_name: food.yemek_adi!, food_image_name: food.yemek_resim_adi!, food_price: Int(food.yemek_fiyat!)!, food_order_count: orderCount, currentUser: currentUser!)
+//    }
+    
+    // Go to detail page
+    func detailButtonTapped(indexPath: IndexPath) {
         let food = foodsList[indexPath.row]
-        if let temp = lastOrderedFoodName, !(lastOrderedFoodName?.isEmpty ?? false) {
-            if (food.yemek_adi != temp) {
-                orderCount = 0
-                self.lastOrderedFoodName = food.yemek_adi
-            }
-        }
-        else {
-            self.lastOrderedFoodName = food.yemek_adi
-        }
-        orderCount += 1
-        homePresenterObjc?.order(food_name: food.yemek_adi!, food_image_name: food.yemek_resim_adi!, food_price: Int(food.yemek_fiyat!)!, food_order_count: orderCount, currentUser: currentUser!)
+//        performSegue(withIdentifier: "toDetails", sender: food)
+//        homePresenterObjc?.order(food_name: food.yemek_adi!, food_image_name: food.yemek_resim_adi!, food_price: Int(food.yemek_fiyat!)!, food_order_count: 1, currentUser: currentUser!)
+//        print(food.yemek_adi!)
     }
     
-    // Subtract button product to basket
-    func subtractButtonDataTransfer(indexPath: IndexPath) {
-        let food = foodsList[indexPath.row]
-        print(food.yemek_id!)
-    }
     
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        switch collectionView {
+//        case collectionViewProducts:
+//            let food = foodsList[indexPath.row]
+//            performSegue(withIdentifier: "toDetails", sender: food)
+//            collectionView.deselectItem(at: indexPath, animated: true)
+//            print("Clicked")
+//        case collectionViewSlider:
+//            break
+//        default:
+//            break
+//        }
+//    }
     
 }
 

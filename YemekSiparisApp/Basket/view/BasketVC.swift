@@ -7,17 +7,26 @@
 
 import UIKit
 
-struct ItemsList {
-    var urunAdi: String?
-    var yemek_siparis_adet: Int?
+class ItemsList {
+    
+    var foodName: String?
+    var foodOrderCount: Int?
+    var food_id: [String]?
+    
+    init(foodName: String, foodOrderCount: Int, food_id: [String]) {
+        self.foodName = foodName
+        self.foodOrderCount = foodOrderCount
+        self.food_id = food_id
+    }
 }
 
 class BasketVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var priceLabel: UILabel!
-    var foods = [Cart]()
+    var foods = [ItemsList]()
     var basketPresenterObjc: ViewToPresenterBasketProtocol?
+    var filteredFoodArray = [ItemsList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,15 +66,19 @@ extension BasketVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let food = foods[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-        cell.foodLabel.text = food.yemek_adi
-        cell.pieceLabel.text = String(food.yemek_siparis_adet!)
+        cell.foodLabel.text = food.foodName
+        cell.pieceLabel.text = String(food.foodOrderCount!)
         return cell
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Sil") { contexttualAction, view, bool in
             let food = self.foods[indexPath.row]
-            self.basketPresenterObjc?.deleteFood(food_id: food.sepet_yemek_id!)
+            if let foodId = food.food_id {
+                for i in foodId {
+                    self.basketPresenterObjc?.deleteFood(food_id: i)
+                }
+            }
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
@@ -75,14 +88,28 @@ extension BasketVC: UITableViewDataSource {
 extension BasketVC: PresenterToViewBasketProtocol {
     
     func dataTransferToView(foodsList: Array<Cart>) {
-//        var itemsToDisplay = [ItemsList]()
-//        for element in foodsList {
-//            let itemCount = foodsList.filter({ $0.yemek_adi })
-//            itemsToDisplay.append(ItemsList(urunAdi: element.yemek_adi, yemek_siparis_adet: itemCount))
-//            foodsList.removeAll { !$0.yemek_adi.contains(element.yemek_adi) }
-//        }
+
+        var uniqueSepet = Set<String>()
+        var filteredArray = [ItemsList]()
         
-        self.foods = foodsList
+        for food in foodsList {
+            uniqueSepet.insert(food.yemek_adi!)
+        }
+        
+        for uniqueName in uniqueSepet {
+            let sameNames = foodsList.filter {
+                $0.yemek_adi == uniqueName
+            }
+            var total = 0
+            var newFoodId: [String] = []
+            for food in sameNames {
+                total += Int(food.yemek_siparis_adet!)!
+                newFoodId.append(food.sepet_yemek_id!)
+            }
+            filteredArray.append(ItemsList(foodName: uniqueName, foodOrderCount: total, food_id: newFoodId))
+            self.foods = filteredArray
+        }
+
         tableView.reloadData()
     }
 }
