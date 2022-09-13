@@ -92,7 +92,10 @@ class HomeVC: UIViewController {
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, BagButtonsProtocol {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let food = foodsList[indexPath.row]
+        performSegue(withIdentifier: "toDetails", sender: food)
+        collectionView.deselectItem(at: indexPath, animated: true)
+        print("Clicked")
     }
     
     // Rows size

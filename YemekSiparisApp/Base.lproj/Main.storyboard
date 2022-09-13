@@ -738,6 +738,7 @@
                         <outlet property="collectionViewSlider" destination="2S3-pZ-B2z" id="Tn7-KD-bXn"/>
                         <segue destination="ykW-yf-aFP" kind="presentation" identifier="toBasket" modalPresentationStyle="fullScreen" id="zdH-SN-UdN"/>
                         <segue destination="CM7-Lv-ZWS" kind="presentation" identifier="toLogin" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="igA-fc-lhT"/>
+                        <segue destination="VMw-NS-hs5" kind="presentation" identifier="toDetails" modalPresentationStyle="fullScreen" id="HCn-1k-IUS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w2K-JC-fSx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
