@@ -7,6 +7,11 @@
 
 import UIKit
 
+struct ItemsList {
+    var urunAdi: String?
+    var yemek_siparis_adet: Int?
+}
+
 class BasketVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -53,7 +58,7 @@ extension BasketVC: UITableViewDataSource {
         let food = foods[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
         cell.foodLabel.text = food.yemek_adi
-        cell.pieceLabel.text = food.yemek_siparis_adet
+        cell.pieceLabel.text = String(food.yemek_siparis_adet!)
         return cell
     }
     
@@ -62,6 +67,13 @@ extension BasketVC: UITableViewDataSource {
 extension BasketVC: PresenterToViewBasketProtocol {
     
     func dataTransferToView(foodsList: Array<Cart>) {
+//        var itemsToDisplay = [ItemsList]()
+//        for element in foodsList {
+//            let itemCount = foodsList.filter({ $0.yemek_adi })
+//            itemsToDisplay.append(ItemsList(urunAdi: element.yemek_adi, yemek_siparis_adet: itemCount))
+//            foodsList.removeAll { !$0.yemek_adi.contains(element.yemek_adi) }
+//        }
+        
         self.foods = foodsList
         tableView.reloadData()
     }

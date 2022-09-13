@@ -25,6 +25,7 @@ class HomeVC: UIViewController {
     var foodsList = [Foods]()
     var currentUser = Auth.auth().currentUser?.email
     var orderCount = 0
+    var lastOrderedFoodName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +108,15 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, BagButto
     
     func addButtonDataTransfer(indexPath: IndexPath) {
         let food = foodsList[indexPath.row]
+        if let temp = lastOrderedFoodName, !(lastOrderedFoodName?.isEmpty ?? false) {
+            if (food.yemek_adi != temp) {
+                orderCount = 0
+                self.lastOrderedFoodName = food.yemek_adi
+            }
+        }
+        else {
+            self.lastOrderedFoodName = food.yemek_adi
+        }
         orderCount += 1
         homePresenterObjc?.order(food_name: food.yemek_adi!, food_image_name: food.yemek_resim_adi!, food_price: Int(food.yemek_fiyat!)!, food_order_count: orderCount, currentUser: currentUser!)
     }
