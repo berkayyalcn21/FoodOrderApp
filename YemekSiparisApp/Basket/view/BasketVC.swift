@@ -11,11 +11,13 @@ class ItemsList {
     
     var foodName: String?
     var foodOrderCount: Int?
+    var foodPrice: Int?
     var food_id: [String]?
     
-    init(foodName: String, foodOrderCount: Int, food_id: [String]) {
+    init(foodName: String, foodOrderCount: Int, foodPrice: Int, food_id: [String]) {
         self.foodName = foodName
         self.foodOrderCount = foodOrderCount
+        self.foodPrice = foodPrice
         self.food_id = food_id
     }
 }
@@ -39,6 +41,11 @@ class BasketVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         basketPresenterObjc?.fethFoods()
+        getOrderPrice()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getOrderPrice()
     }
 
     @IBAction func confirmCartButtonTapped(_ sender: Any) {
@@ -48,10 +55,20 @@ class BasketVC: UIViewController {
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
-        dismiss(animated: true)
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewController(identifier: "HomeVC")
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false)
+    }
+    
+    func getOrderPrice() {
+        var total = 0
+        for i in foods {
+            total += i.foodPrice!
+        }
+        priceLabel.text = String("\(total) ₺")
     }
 }
-
 
 extension BasketVC: UITableViewDelegate {
     
@@ -60,7 +77,7 @@ extension BasketVC: UITableViewDelegate {
 extension BasketVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        foods.count
+        return foods.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,6 +95,9 @@ extension BasketVC: UITableViewDataSource {
                 for i in foodId {
                     self.basketPresenterObjc?.deleteFood(food_id: i)
                 }
+                self.foods.remove(at: indexPath.row)
+                self.getOrderPrice()
+                tableView.reloadData()
             }
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
@@ -88,7 +108,7 @@ extension BasketVC: UITableViewDataSource {
 extension BasketVC: PresenterToViewBasketProtocol {
     
     func dataTransferToView(foodsList: Array<Cart>) {
-
+        
         var uniqueSepet = Set<String>()
         var filteredArray = [ItemsList]()
         
@@ -101,13 +121,18 @@ extension BasketVC: PresenterToViewBasketProtocol {
                 $0.yemek_adi == uniqueName
             }
             var total = 0
+            var price = 0
             var newFoodId: [String] = []
             for food in sameNames {
                 total += Int(food.yemek_siparis_adet!)!
                 newFoodId.append(food.sepet_yemek_id!)
+                price += Int(food.yemek_fiyat!)!
+                print("\(price) yemek fiyat")
             }
-            filteredArray.append(ItemsList(foodName: uniqueName, foodOrderCount: total, food_id: newFoodId))
-            self.foods = filteredArray
+            filteredArray.append(ItemsList(foodName: uniqueName, foodOrderCount: total, foodPrice: price, food_id: newFoodId))
+            if filteredArray.count > 0 {
+                self.foods = filteredArray
+            }
         }
 
         tableView.reloadData()

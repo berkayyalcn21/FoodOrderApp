@@ -15,6 +15,7 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var collectionViewSlider: UICollectionView!
     @IBOutlet weak var collectionViewProducts: UICollectionView!
+    @IBOutlet weak var searchBarText: UISearchBar!
     let sliderImages = [
         "slider-1",
         "slider-2",
@@ -25,8 +26,6 @@ class HomeVC: UIViewController {
     var foodsList = [Foods]()
     var filteredFoodList = [Foods]()
     var currentUser = Auth.auth().currentUser?.email
-    var orderCount = 0
-    var lastOrderedFoodName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +35,7 @@ class HomeVC: UIViewController {
         collectionViewSlider.dataSource = self
         collectionViewProducts.delegate = self
         collectionViewProducts.dataSource = self
+        searchBarText.delegate = self
         HomeRouter.createModule(ref: self)
         
         // For closed keyboard
@@ -116,6 +116,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, BagButto
             item.imageView.image = UIImage(named: image)
             item.sliderPageControl.numberOfPages = sliderImages.count
             return item
+            
         // Product collectionView
         case collectionViewProducts:
             let food = foodsList[indexPath.row]
@@ -132,49 +133,22 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, BagButto
             cell.itemsProtocol = self
             cell.indexPath = indexPath
             return cell
+            
         default:
             return UICollectionViewCell()
         }
     }
     
-    // Add button product to basket
-//    func addButtonDataTransfer(indexPath: IndexPath) {
-//        let food = foodsList[indexPath.row]
-//        if let temp = lastOrderedFoodName, !(lastOrderedFoodName?.isEmpty ?? false) {
-//            if (food.yemek_adi != temp) {
-//                orderCount = 0
-//                self.lastOrderedFoodName = food.yemek_adi
-//            }
-//        }
-//        else {
-//            self.lastOrderedFoodName = food.yemek_adi
-//        }
-//        orderCount += 1
-//        homePresenterObjc?.order(food_name: food.yemek_adi!, food_image_name: food.yemek_resim_adi!, food_price: Int(food.yemek_fiyat!)!, food_order_count: orderCount, currentUser: currentUser!)
-//    }
-    
     // Go to detail page
     func detailButtonTapped(indexPath: IndexPath) {
         let food = foodsList[indexPath.row]
-//        performSegue(withIdentifier: "toDetails", sender: food)
-//        homePresenterObjc?.order(food_name: food.yemek_adi!, food_image_name: food.yemek_resim_adi!, food_price: Int(food.yemek_fiyat!)!, food_order_count: 1, currentUser: currentUser!)
-//        print(food.yemek_adi!)
+        let main = UIStoryboard(name: "Main", bundle: nil)
+        let vc = main.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
+        vc.modalPresentationStyle = .fullScreen
+        vc.products = food
+        vc.productInfo = ProductDetailsList.productList[indexPath.row]
+        show(vc, sender: self)
     }
-    
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        switch collectionView {
-//        case collectionViewProducts:
-//            let food = foodsList[indexPath.row]
-//            performSegue(withIdentifier: "toDetails", sender: food)
-//            collectionView.deselectItem(at: indexPath, animated: true)
-//            print("Clicked")
-//        case collectionViewSlider:
-//            break
-//        default:
-//            break
-//        }
-//    }
     
 }
 
@@ -190,12 +164,22 @@ extension HomeVC: PresenterToViewHomeProtocol {
     
     func dataTransferToView(foodsList: Array<Foods>) {
         self.foodsList = foodsList
+        self.filteredFoodList = foodsList
         self.collectionViewProducts.reloadData()
     }
 }
 
 extension HomeVC: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        filteredFoodList = foodsList.contains(
+        
+        foodsList = filteredFoodList.filter {
+            if searchText.count != 0 {
+                return $0.yemek_adi!.lowercased().contains(searchText.lowercased())
+            }
+            return true
+        }
+        collectionViewProducts.reloadData()
+        
     }
 }

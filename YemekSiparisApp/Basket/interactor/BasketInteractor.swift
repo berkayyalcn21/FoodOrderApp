@@ -38,7 +38,7 @@ class BasketInteractor: PresenterToInteractorBasketProtocol {
                 do {
                     let result = try JSONSerialization.jsonObject(with: data)
                     print(result)
-                    self.fetch()
+                    
                 }catch {
                     print(error.localizedDescription)
                 }

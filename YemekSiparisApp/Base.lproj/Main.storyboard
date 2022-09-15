@@ -724,6 +724,7 @@
                     <connections>
                         <outlet property="collectionViewProducts" destination="YFQ-Jd-gmA" id="GdI-ee-0Eb"/>
                         <outlet property="collectionViewSlider" destination="2S3-pZ-B2z" id="Tn7-KD-bXn"/>
+                        <outlet property="searchBarText" destination="LIy-Av-CLt" id="vcJ-Bq-EZx"/>
                         <segue destination="ykW-yf-aFP" kind="presentation" identifier="toBasket" modalPresentationStyle="fullScreen" id="zdH-SN-UdN"/>
                         <segue destination="CM7-Lv-ZWS" kind="presentation" identifier="toLogin" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="igA-fc-lhT"/>
                         <segue destination="VMw-NS-hs5" kind="presentation" identifier="toDetails" modalPresentationStyle="fullScreen" id="HCn-1k-IUS"/>
@@ -884,8 +885,8 @@
                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55,00 TL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="It5-pa-HMj">
-                                        <rect key="frame" x="306" y="25" width="83" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 TL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="It5-pa-HMj">
+                                        <rect key="frame" x="348" y="25" width="41" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -958,7 +959,7 @@
         <!--DetailsVC-->
         <scene sceneID="a1T-hB-Hqt">
             <objects>
-                <viewController id="VMw-NS-hs5" customClass="DetailsVC" customModule="YemekSiparisApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsVC" id="VMw-NS-hs5" customClass="DetailsVC" customModule="YemekSiparisApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bfO-M6-njR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1021,13 +1022,13 @@
                                 <rect key="frame" x="57" y="705" width="300" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hazırlanma Süresi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pem-1z-r6N">
-                                        <rect key="frame" x="0.0" y="0.0" width="144" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="209.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toplam Tutar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JES-5D-YYm">
-                                        <rect key="frame" x="196" y="0.0" width="104" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Fiyat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JES-5D-YYm">
+                                        <rect key="frame" x="261.5" y="0.0" width="38.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1156,12 +1157,14 @@
                             <constraint firstItem="4GP-8C-4Kq" firstAttribute="leading" secondItem="FnO-a4-QdV" secondAttribute="leading" constant="57" id="cgi-4y-JK7"/>
                             <constraint firstItem="itL-TW-Ehg" firstAttribute="top" secondItem="uGG-Sk-Sjq" secondAttribute="bottom" constant="30" id="eVP-B8-7Ep"/>
                             <constraint firstItem="FnO-a4-QdV" firstAttribute="trailing" secondItem="J6S-4D-ecN" secondAttribute="trailing" constant="57" id="fGo-BA-beA"/>
+                            <constraint firstItem="FnO-a4-QdV" firstAttribute="bottom" secondItem="ok2-hT-pEO" secondAttribute="bottom" constant="40" id="foh-Py-qp8"/>
                             <constraint firstItem="FnO-a4-QdV" firstAttribute="trailing" secondItem="T4x-ac-e0b" secondAttribute="trailing" constant="57" id="ljn-ag-euK"/>
                             <constraint firstItem="b8o-dQ-ELs" firstAttribute="leading" secondItem="FnO-a4-QdV" secondAttribute="leading" constant="20" id="oaE-Em-1V0"/>
                             <constraint firstItem="uGG-Sk-Sjq" firstAttribute="leading" secondItem="FnO-a4-QdV" secondAttribute="leading" constant="57" id="r7w-6j-Jpx"/>
                             <constraint firstItem="LyS-md-TVP" firstAttribute="top" secondItem="J6S-4D-ecN" secondAttribute="bottom" constant="15" id="t16-8j-GDw"/>
                             <constraint firstItem="aq0-HF-bpR" firstAttribute="top" secondItem="FnO-a4-QdV" secondAttribute="top" constant="7" id="u09-Gj-EV6"/>
                             <constraint firstItem="LyS-md-TVP" firstAttribute="leading" secondItem="ok2-hT-pEO" secondAttribute="trailing" constant="52" id="uZp-Er-HfC"/>
+                            <constraint firstItem="FnO-a4-QdV" firstAttribute="bottom" secondItem="LyS-md-TVP" secondAttribute="bottom" constant="40" id="w6d-vA-dRQ"/>
                             <constraint firstItem="FnO-a4-QdV" firstAttribute="trailing" secondItem="8xA-md-ngS" secondAttribute="trailing" constant="57" id="yUf-pp-6hW"/>
                             <constraint firstAttribute="trailing" secondItem="LyS-md-TVP" secondAttribute="trailing" constant="-11" id="ybu-0E-PIM"/>
                         </constraints>
@@ -1170,10 +1173,12 @@
                     <connections>
                         <outlet property="foodDescLabel" destination="T4x-ac-e0b" id="ldj-b2-zXg"/>
                         <outlet property="foodNameLabel" destination="4GP-8C-4Kq" id="kYt-TP-Beb"/>
-                        <outlet property="foodStarLabel" destination="T4x-ac-e0b" id="wDq-PJ-AXa"/>
+                        <outlet property="foodPrepareTime" destination="zrx-SW-8TR" id="STq-DQ-FHr"/>
+                        <outlet property="foodStarLabel" destination="QAf-l4-CVo" id="cGp-dZ-l6r"/>
                         <outlet property="imageView" destination="uGG-Sk-Sjq" id="1zF-rY-RY5"/>
-                        <outlet property="orderCountLabel" destination="4l5-tz-tY4" id="9fb-yl-itc"/>
+                        <outlet property="orderCountLabel" destination="4l5-tz-tY4" id="oLP-2y-Taj"/>
                         <outlet property="totalPriceLabel" destination="FWp-Jx-U6k" id="bNG-sw-lwD"/>
+                        <segue destination="ykW-yf-aFP" kind="presentation" identifier="toBasket" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="kZd-IK-NR9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1j-dA-2ai" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1182,6 +1187,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="zdH-SN-UdN"/>
         <segue reference="igA-fc-lhT"/>
     </inferredMetricsTieBreakers>
     <resources>
